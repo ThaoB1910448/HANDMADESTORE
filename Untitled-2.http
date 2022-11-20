@@ -1,0 +1,16 @@
+POST https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBhOfwESVQF89jlbSqznmZNwNG6HHQs-j4
+
+{
+    "email":"thao@gmail.com",
+    "password":"123456",
+    "returnSecureToken":true
+}
+
+###
+POST https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBhOfwESVQF89jlbSqznmZNwNG6HHQs-j4
+
+{
+"email":"thao123@gmail.com",
+"password":"123456",
+"returnSecureToken":true
+}

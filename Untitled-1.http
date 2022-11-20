@@ -1,0 +1,21 @@
+POST https://flutter-myshop-ct484-d15fa-default-rtdb.asia-southeast1.firebasedatabase.app/products.json?
+Content-Type: application/json
+
+{
+"creatorId": "cy9uecJW3ugBqw0MnwBuE97U44F3",
+"description": "With a blue frame design and a different way of knitting fan wires, it is certain that no matter what space she is in, she will highlight her lovely room.",
+"imageUrl": "http://quatanglambangtay.com/uploads/products/399215302_dreamcatcher_mu_xanh_d_thng_m_drb6.jpg",
+"price": 15.09,
+"title": "CUTE BLUE DREAMCATCHER"
+}
+
+###
+GET https://flutter-myshop-ct484-d15fa-default-rtdb.asia-southeast1.firebasedatabase.app/products/-NHJSLP20I0zwjl3HTkh.json?
+
+###
+GET https://flutter-myshop-ct484-d15fa-default-rtdb.asia-southeast1.firebasedatabase.app/userFavorites/cy9uecJW3ugBqw0MnwBuE97U44F3.json?
+
+{
+    "-NHJSLP20I0zwjl3HTkh": false,
+    "-NHJTBbm6fDCbrn0LfiK": true
+}
