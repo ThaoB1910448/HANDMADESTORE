@@ -22,28 +22,28 @@ class ProductManager with ChangeNotifier {
   Future<void> addProducts(Product product) async {
     final newProduct = await _productsService.addProduct(product);
     if (newProduct != null) {
-      _items.add(newProduct);
+      _item.add(newProduct);
       notifyListeners();
     }
   }
 
   Future<void> updateProduct(Product product) async {
-    final index = _items.indexWhere((item) => item.id == product.id);
+    final index = _item.indexWhere((item) => item.id == product.id);
     if (index >= 0) {
       if (await _productsService.updateProduct(product)) {
-        _items[index] = product;
+        _item[index] = product;
         notifyListeners();
       }
     }
   }
 
   Future<void> deleteProduct(String id) async {
-    final index = _items.indexWhere((item) => item.id == id);
-    Product? existingProduct = _items[index];
-    _items.removeAt(index);
+    final index = _item.indexWhere((item) => item.id == id);
+    Product? existingProduct = _item[index];
+    _item.removeAt(index);
     notifyListeners();
     if (!await _productsService.deleteProduct(id)) {
-      _items.insert(index, existingProduct);
+      _item.insert(index, existingProduct);
       notifyListeners();
     }
   }
@@ -60,7 +60,7 @@ class ProductManager with ChangeNotifier {
     }
   }
 
-  final List<Product> _items = [
+  // final List<Product> _items = [
     // Product(
     //   id: 'p1',
     //   title: 'DREAMCATCHER PRESENT FLOWER PASTEL',
@@ -79,6 +79,7 @@ class ProductManager with ChangeNotifier {
     //   imageUrl:
     //       'http://quatanglambangtay.com/uploads/products/516610396_dreamcatcherganden.jpg',
     // ),
+    
     // Product(
     //   id: 'p3',
     //   title: 'CUTE DOOR TABLE',
@@ -98,22 +99,40 @@ class ProductManager with ChangeNotifier {
     //       'http://quatanglambangtay.com/uploads/products/399215302_dreamcatcher_mu_xanh_d_thng_m_drb6.jpg',
     //   isFavorite: true,
     // ),
-];
+    // Product(
+    //   id: 'p5',
+    //   title: 'BRACELET',
+    //   description:
+    //       'Handmade line with genuine leather materials, decorative accessories & diverse mix but leaning towards simplicity, deep color.',
+    //   price: 12.04,
+    //   imageUrl:
+    //       'https://bizweb.dktcdn.net/100/090/662/products/vong-tay-handmade-nu-3.jpg?v=1614570377983',
+    // ),
+    // Product(
+    //   id: 'p5',
+    //   title: 'Bamboo house',
+    //   description:
+    //       'There are many ways to make simple handmade things with paper or available materials such as felt fabric, bamboo paper core, plastic spoon. But you will be mesmerized with this DIY handmade bamboo idea because it's so beautiful.',
+    //   price: 37.04,
+    //   imageUrl:
+    //       'http://tretrucsaigon.com/images/THI_CONG_TRE/%C4%91%E1%BB%93_handmade_t%E1%BB%AB_tre_2.jpg',
+    // ),
+// ];
   
 
   int get itemCount {
-    return _items.length;
+    return _item.length;
   }
 
   List<Product> get items {
-    return [..._items];
+    return [..._item];
   }
 
   List<Product> get favoriteItems {
-    return _items.where((prodItem) => prodItem.isFavorite).toList();
+    return _item.where((prodItem) => prodItem.isFavorite).toList();
   }
 
   Product findById(String id) {
-    return _items.firstWhere((prod) => prod.id == id);
+    return _item.firstWhere((prod) => prod.id == id);
   }
 }
